@@ -42,6 +42,7 @@ __meta__ = {
 [node name="Borders" type="Node2D" parent="."]
 
 [node name="WallLeft" type="StaticBody2D" parent="Borders"]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/WallLeft"]
 position = Vector2( -5, 300 )
@@ -69,6 +70,7 @@ shape = SubResource( 4 )
 
 [node name="BouncePad" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 8 )
+collision_layer = 2
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
