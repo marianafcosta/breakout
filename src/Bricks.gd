@@ -2,13 +2,13 @@ extends Node2D
 
 const BRICK_RESOURCE = preload("res://Brick.tscn")
 
-const H_DIST_BETWEEN_BRICKS = 20
-const V_DIST_BETWEEN_BRICKS = 20
-const H_SCREEN_PADDING = 50
+const H_DIST_BETWEEN_BRICKS = 5
+const V_DIST_BETWEEN_BRICKS = 5
+const H_SCREEN_PADDING = 5
 
 var h_num_of_bricks
 var v_num_of_bricks = 5
-export var start_pos = Vector2(H_SCREEN_PADDING, 50)
+export var start_pos = Vector2(H_SCREEN_PADDING, 10)
 
 var width_sprite
 var height_sprite
@@ -16,8 +16,8 @@ var screen_dimensions
 
 func _ready():
 	# TODO Hardocoded for now, but change to calculating the dimensions according to the resource's sprite
-	width_sprite = 20
-	height_sprite = 10
+	width_sprite = 8
+	height_sprite = 2
 	screen_dimensions = get_viewport_rect().size
 	# TODO This calculation isn't correct
 	# __[   ]__

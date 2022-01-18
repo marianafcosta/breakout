@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var speed = 400
+export var speed = 50
 var velocity = Vector2(speed, 0)
 
 func _physics_process(delta):
