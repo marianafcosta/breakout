@@ -9,6 +9,9 @@ extents = Vector2( 4, 1 )
 [node name="BouncePad" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

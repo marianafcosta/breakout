@@ -1,20 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://BouncePad.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Bricks.gd" type="Script" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 300 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4, 300 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 4, 512.062 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 4, 512 )
 
 [node name="Root" type="Node2D"]
 
@@ -35,32 +24,23 @@ __meta__ = {
 
 [node name="Borders" type="Node2D" parent="."]
 
-[node name="WallLeft" type="StaticBody2D" parent="Borders"]
-collision_mask = 0
+[node name="DebugWallDown" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 160, 178 )
+scale = Vector2( 40, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/WallLeft"]
-position = Vector2( -5, 300 )
-shape = SubResource( 1 )
-
-[node name="WallRight" type="StaticBody2D" parent="Borders"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/WallRight"]
-position = Vector2( 324, 200 )
-shape = SubResource( 2 )
-
-[node name="Floor" type="StaticBody2D" parent="Borders"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Floor"]
-position = Vector2( 506, 184 )
+[node name="WallLeft" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 2, 100 )
 rotation = 1.5708
-shape = SubResource( 3 )
+scale = Vector2( 20, 1 )
 
-[node name="Ceiling" type="StaticBody2D" parent="Borders"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Ceiling"]
-position = Vector2( 512, -3.99998 )
+[node name="WallRight" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 318, 100 )
 rotation = 1.5708
-shape = SubResource( 4 )
+scale = Vector2( 20, 1 )
+
+[node name="WallUp" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 160, 18 )
+scale = Vector2( 40, 1 )
 
 [node name="BouncePad" parent="." instance=ExtResource( 1 )]
 position = Vector2( 164, 154 )

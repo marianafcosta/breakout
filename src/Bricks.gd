@@ -4,11 +4,11 @@ const BRICK_RESOURCE = preload("res://Brick.tscn")
 
 const H_DIST_BETWEEN_BRICKS = 5
 const V_DIST_BETWEEN_BRICKS = 5
-const H_SCREEN_PADDING = 5
+const H_SCREEN_PADDING = 4
 
 var h_num_of_bricks
 var v_num_of_bricks = 5
-export var start_pos = Vector2(H_SCREEN_PADDING, 10)
+export var start_pos = Vector2(H_SCREEN_PADDING, 22 + 10)
 
 var width_sprite
 var height_sprite
