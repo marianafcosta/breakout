@@ -25,16 +25,16 @@ __meta__ = {
 [node name="Borders" type="Node2D" parent="."]
 
 [node name="DebugWallDown" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 160, 178 )
+position = Vector2( 160, 179 )
 scale = Vector2( 40, 1 )
 
 [node name="WallLeft" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 2, 100 )
+position = Vector2( 1, 99 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
 
 [node name="WallRight" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 318, 100 )
+position = Vector2( 319, 99 )
 rotation = 1.5708
 scale = Vector2( 20, 1 )
 
