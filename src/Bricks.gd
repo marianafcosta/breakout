@@ -2,10 +2,10 @@ extends Node2D
 
 const BRICK_RESOURCE = preload("res://Brick.tscn")
 
-const H_SCREEN_PADDING = 4
+const H_SCREEN_PADDING = 6
 
 var h_num_of_bricks
-var v_num_of_bricks = 5
+var v_num_of_bricks = 6
 export var start_pos = Vector2(H_SCREEN_PADDING, 22 + 10) # NOTE: 22 (outside of top wall) + 10 (distance to that wall) 
 
 var width_sprite
@@ -13,9 +13,10 @@ var height_sprite
 var screen_dimensions
 
 func _ready():
-	# TODO Hardocoded for now, but change to calculating the dimensions according to the resource's sprite
+	# TODO: Hardocoded for now, but change to calculating the dimensions according to the resource's sprite
 	width_sprite = 8
 	height_sprite = 2
+	# TODO: I don't think these are the dimensions I want
 	screen_dimensions = get_viewport_rect().size
 	var h_num_of_bricks_float = (screen_dimensions.x - (H_SCREEN_PADDING * 2)) / width_sprite
 	h_num_of_bricks = int(round(h_num_of_bricks_float))
@@ -33,5 +34,6 @@ func spawn_bricks():
 			instance = BRICK_RESOURCE.instance()
 			add_child(instance)
 			instance.position = pos
+			instance.init(v)
 			pos.x += h_inc
 		pos = Vector2(start_pos.x, pos.y + v_inc)
