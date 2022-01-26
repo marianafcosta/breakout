@@ -3,8 +3,12 @@ extends KinematicBody2D
 var velocity = Vector2(50, 50)
 var wait_for = 0
 
+var hits_num = 0
+var orange_contact = false
+var red_contact = false
+
 func _physics_process(delta):
-	# NOTE: https://docs.godotengine.org/en/3.4/tutorials/physics/physics_introduction.html
+	# So that collisions aren't negated because they last for more than one cycle
 	if (wait_for > 0):
 		$CollisionShape2D.disabled = true
 		wait_for -= 1
@@ -13,8 +17,16 @@ func _physics_process(delta):
 		
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
+		var prev_hits_num = hits_num
 		if (collision_info.collider is Brick):
 			collision_info.collider.queue_free()
+			hits_num += 1
+			if (collision_info.collider.color == "orange" && !orange_contact):
+				orange_contact = true
+				velocity *= 1.2
+			elif(collision_info.collider.color == "red" && !red_contact):
+				red_contact = true
+				velocity *= 1.2
 			
 		# TODO: The physics stil aren't quite right
 		if (collision_info.collider is BouncePad):
@@ -44,3 +56,9 @@ func _physics_process(delta):
 					velocity = velocity.bounce(collision_info.normal)
 		else:
 			velocity = velocity.bounce(collision_info.normal)
+		
+		if (
+			prev_hits_num < 4 && hits_num == 4 ||
+			prev_hits_num < 12 && hits_num == 12
+		):
+			velocity *= 1.2

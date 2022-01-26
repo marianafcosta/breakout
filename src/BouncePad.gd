@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 class_name BouncePad
 
-export var speed = 50
+export var speed = 125
 var velocity = Vector2(speed, 0)
 
 # NOTE: https://www.informit.com/articles/article.aspx?p=2180417&seqNum=2
