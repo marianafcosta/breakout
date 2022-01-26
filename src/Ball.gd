@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal top_wall_hit
+signal brick_hit
 
 var velocity = Vector2(50, 50)
 var wait_for = 0
@@ -26,6 +27,7 @@ func _physics_process(delta):
 		if (collision_info.collider is Brick):
 			collision_info.collider.queue_free()
 			hits_num += 1
+			emit_signal("brick_hit", collision_info.collider.color)
 			if (collision_info.collider.color == "orange" && !orange_contact):
 				orange_contact = true
 				velocity *= 1.2
