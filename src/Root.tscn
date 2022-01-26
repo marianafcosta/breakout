@@ -51,3 +51,5 @@ script = ExtResource( 6 )
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 161, 139 )
+
+[connection signal="top_wall_hit" from="Ball" to="BouncePad" method="_on_Ball_top_wall_hit"]

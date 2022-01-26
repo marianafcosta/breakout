@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal top_wall_hit
+
 var velocity = Vector2(50, 50)
 var wait_for = 0
 
@@ -17,6 +19,9 @@ func _physics_process(delta):
 		
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
+		if (collision_info.collider.name == "WallUp"):
+			emit_signal("top_wall_hit")
+		
 		var prev_hits_num = hits_num
 		if (collision_info.collider is Brick):
 			collision_info.collider.queue_free()

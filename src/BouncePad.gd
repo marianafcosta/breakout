@@ -14,3 +14,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_left"):
 		direction = -1
 	var collision_info = move_and_collide(direction * velocity * delta)
+
+
+func _on_Ball_top_wall_hit():
+	set_scale(Vector2(0.75, 1))
