@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal top_wall_hit
 signal brick_hit
+signal out_of_bounds
 
 var velocity = Vector2(50, 50)
 var wait_for = 0
@@ -10,7 +11,18 @@ var hits_num = 0
 var orange_contact = false
 var red_contact = false
 
+var screen_dimensions
+
+func _ready():
+	screen_dimensions = get_viewport_rect().size
+	self.connect("top_wall_hit", get_tree().root.get_node("Root/BouncePad"), "_on_Ball_top_wall_hit")
+	self.connect("brick_hit", get_tree().root.get_node("Root"), "_on_Ball_brick_hit")
+	self.connect("out_of_bounds", get_tree().root.get_node("Root"), "_on_Ball_out_of_bounds")
+
 func _physics_process(delta):
+	if (position.y > screen_dimensions.y + $Sprite.texture.get_height()): # TODO these dimensions arent correct because of the scaling i think
+		emit_signal("out_of_bounds")
+		queue_free()
 	# So that collisions aren't negated because they last for more than one cycle
 	if (wait_for > 0):
 		$CollisionShape2D.disabled = true
