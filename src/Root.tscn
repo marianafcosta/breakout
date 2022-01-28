@@ -29,15 +29,20 @@ __meta__ = {
 margin_left = 26.0
 margin_right = 76.0
 margin_bottom = 17.0
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "0"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Lives" type="Label" parent="UI"]
 margin_left = 254.0
 margin_right = 294.0
 margin_bottom = 17.0
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "5"
 align = 1
@@ -48,23 +53,19 @@ __meta__ = {
 
 [node name="Borders" type="Node2D" parent="."]
 
-[node name="DebugWallDown" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 160, 199 )
-scale = Vector2( 40, 1 )
-
 [node name="WallLeft" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 1, 99 )
+position = Vector2( 4, 109 )
 rotation = 1.5708
-scale = Vector2( 20, 1 )
+scale = Vector2( 21, 4 )
 
 [node name="WallRight" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 319, 99 )
+position = Vector2( 316, 109 )
 rotation = 1.5708
-scale = Vector2( 20, 1 )
+scale = Vector2( 21, 4 )
 
 [node name="WallUp" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 160, 18 )
-scale = Vector2( 40, 1 )
+position = Vector2( 160, 21 )
+scale = Vector2( 40, 4 )
 
 [node name="BouncePad" parent="." instance=ExtResource( 1 )]
 position = Vector2( 164, 154 )
