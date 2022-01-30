@@ -4,7 +4,7 @@ signal top_wall_hit
 signal brick_hit
 signal out_of_bounds
 
-var velocity = Vector2(50, 50)
+var velocity = Vector2(0, 0)
 var wait_for = 0
 
 var hits_num = 0
@@ -15,6 +15,7 @@ var screen_dimensions
 
 func _ready():
 	screen_dimensions = get_viewport_rect().size
+	position = Vector2(screen_dimensions.x / 2, screen_dimensions.y / 2 + 10)
 	self.connect("top_wall_hit", get_tree().root.get_node("Root/BouncePad"), "_on_Ball_top_wall_hit")
 	self.connect("brick_hit", get_tree().root.get_node("Root"), "_on_Ball_brick_hit")
 	self.connect("out_of_bounds", get_tree().root.get_node("Root"), "_on_Ball_out_of_bounds")
@@ -81,3 +82,6 @@ func _physics_process(delta):
 			prev_hits_num < 12 && hits_num == 12
 		):
 			velocity *= 1.2
+
+func _on_Timer_timeout():
+	velocity = Vector2(75, 75)

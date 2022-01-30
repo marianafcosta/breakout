@@ -69,7 +69,7 @@ scale = Vector2( 40, 4 )
 
 [node name="BouncePad" parent="." instance=ExtResource( 1 )]
 position = Vector2( 164, 154 )
-scale = Vector2( 2, 1 )
+scale = Vector2( 3, 2 )
 
 [node name="Bricks" type="Node2D" parent="."]
 script = ExtResource( 6 )

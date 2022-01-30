@@ -7,7 +7,7 @@ const BRICK_DIMENSIONS = Vector2(8, 2)
 
 var h_num_of_bricks
 var v_num_of_bricks = 6
-export var start_pos = Vector2(H_SCREEN_PADDING + 8, 25 + 25 + 4) # NOTE: 24 (outside of top wall) + 10 (distance to that wall) 
+export var start_pos = Vector2(H_SCREEN_PADDING + 8, 25 + 15) # NOTE: 24 (outside of top wall) + 10 (distance to that wall) 
 
 var sprite_dimensions
 var screen_dimensions

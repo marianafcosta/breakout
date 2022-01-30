@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 class_name BouncePad
 
-export var speed = 125
+export var speed = 200
 var velocity = Vector2(speed, 0)
+
+var top_wall_hit = false
 
 # NOTE: https://www.informit.com/articles/article.aspx?p=2180417&seqNum=2
 # This article describes the paddle physics in detail
@@ -17,4 +19,7 @@ func _physics_process(delta):
 
 
 func _on_Ball_top_wall_hit():
-	set_scale(Vector2(0.75, 1))
+	if not top_wall_hit:
+		print("reducing size")
+		set_scale(Vector2(self.scale.x * 0.75, self.scale.y))
+		top_wall_hit = true
