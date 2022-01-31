@@ -6,6 +6,7 @@ const BALL_RESOURCE = preload("res://Ball.tscn")
 
 var score = 0
 var lives = 5
+var levels_cleared = 0
 
 var COLORS_TO_POINTS = {
 	"blue": 1,
@@ -27,4 +28,15 @@ func _on_Ball_out_of_bounds():
 	if (lives > 0):
 		var instance = BALL_RESOURCE.instance()
 		add_child(instance)
-		instance.position = Vector2(160, 90)
+
+func _on_NextLevelTimer_timeout():
+	$BouncePad.reset()
+	$Bricks.spawn_bricks()
+	$Ball.queue_free()
+	var instance = BALL_RESOURCE.instance()
+	add_child(instance)
+
+func _on_Bricks_wall_cleared():
+	if $NextLevelTimer.time_left <= 0 && levels_cleared < 1:
+		levels_cleared += 1
+		$NextLevelTimer.start()

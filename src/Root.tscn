@@ -77,7 +77,13 @@ script = ExtResource( 6 )
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 161, 139 )
 
+[node name="NextLevelTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="score_change" from="." to="UI" method="_on_Root_score_change"]
+[connection signal="wall_cleared" from="Bricks" to="." method="_on_Bricks_wall_cleared"]
 [connection signal="brick_hit" from="Ball" to="." method="_on_Ball_brick_hit"]
 [connection signal="out_of_bounds" from="Ball" to="." method="_on_Ball_out_of_bounds"]
 [connection signal="top_wall_hit" from="Ball" to="BouncePad" method="_on_Ball_top_wall_hit"]
+[connection signal="timeout" from="NextLevelTimer" to="." method="_on_NextLevelTimer_timeout"]
