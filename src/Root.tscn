@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://BouncePad.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=2]
@@ -6,21 +6,52 @@
 [ext_resource path="res://Root.gd" type="Script" id=4]
 [ext_resource path="res://FontPixel.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Bricks.gd" type="Script" id=6]
+[ext_resource path="res://PauseScreen.gd" type="Script" id=7]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="UI"]
-margin_right = 320.0
-margin_bottom = 180.0
-color = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="WallLeft" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 4, 109 )
+rotation = 1.5708
+scale = Vector2( 21, 4 )
+
+[node name="WallRight" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 316, 109 )
+rotation = 1.5708
+scale = Vector2( 21, 4 )
+
+[node name="WallUp" parent="Borders" instance=ExtResource( 2 )]
+position = Vector2( 160, 21 )
+scale = Vector2( 40, 4 )
+
+[node name="BouncePad" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 150 )
+scale = Vector2( 3, 2 )
+
+[node name="Bricks" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 161, 139 )
+
+[node name="NextLevelTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -51,35 +82,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Borders" type="Node2D" parent="."]
+[node name="PauseScreen" type="Control" parent="UI"]
+pause_mode = 2
+visible = false
+margin_right = 320.0
+margin_bottom = 180.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="WallLeft" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 4, 109 )
-rotation = 1.5708
-scale = Vector2( 21, 4 )
+[node name="Background" type="ColorRect" parent="UI/PauseScreen"]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 0, 0, 0, 0.631373 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="WallRight" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 316, 109 )
-rotation = 1.5708
-scale = Vector2( 21, 4 )
-
-[node name="WallUp" parent="Borders" instance=ExtResource( 2 )]
-position = Vector2( 160, 21 )
-scale = Vector2( 40, 4 )
-
-[node name="BouncePad" parent="." instance=ExtResource( 1 )]
-position = Vector2( 164, 154 )
-scale = Vector2( 3, 2 )
-
-[node name="Bricks" type="Node2D" parent="."]
-script = ExtResource( 6 )
-
-[node name="Ball" parent="." instance=ExtResource( 3 )]
-position = Vector2( 161, 139 )
-
-[node name="NextLevelTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="Text" type="Label" parent="UI/PauseScreen"]
+margin_right = 320.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 5 )
+text = "PAUSE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="score_change" from="." to="UI" method="_on_Root_score_change"]
 [connection signal="wall_cleared" from="Bricks" to="." method="_on_Bricks_wall_cleared"]

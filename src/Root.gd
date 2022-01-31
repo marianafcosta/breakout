@@ -21,7 +21,6 @@ func _on_Ball_brick_hit(color):
 	score += COLORS_TO_POINTS[color]
 	$UI/Score.text = str(score)
 
-
 func _on_Ball_out_of_bounds():
 	lives -= 1
 	$UI/Lives.text = str(lives)
@@ -35,6 +34,7 @@ func _on_NextLevelTimer_timeout():
 	$Ball.queue_free()
 	var instance = BALL_RESOURCE.instance()
 	add_child(instance)
+	move_child(instance, 3)
 
 func _on_Bricks_wall_cleared():
 	if $NextLevelTimer.time_left <= 0 && levels_cleared < 1:
