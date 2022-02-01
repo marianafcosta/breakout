@@ -7,6 +7,7 @@ const BALL_RESOURCE = preload("res://Ball.tscn")
 var score = 0
 var lives = 5
 var levels_cleared = 0
+var game_over = false
 
 var COLORS_TO_POINTS = {
 	"blue": 1,
@@ -16,6 +17,21 @@ var COLORS_TO_POINTS = {
 	"orange": 7,
 	"red": 8,
 }
+
+func _process(_delta):
+	if (Input.is_action_just_pressed("ui_restart") && game_over):
+		restart()
+
+func restart():
+	$UI/GameOverScreen.visible = false
+	$UI/Score.text = str(score)
+	$UI/Lives.text = str(lives)
+	game_over = false
+	lives = 5
+	score = 0
+	var instance = BALL_RESOURCE.instance()
+	add_child(instance)
+	move_child(instance, 4)
 
 func _on_Ball_brick_hit(color):
 	score += COLORS_TO_POINTS[color]
@@ -27,6 +43,9 @@ func _on_Ball_out_of_bounds():
 	if (lives > 0):
 		var instance = BALL_RESOURCE.instance()
 		add_child(instance)
+	else:
+		game_over = true
+		$UI/GameOverScreen.visible = game_over
 
 func _on_NextLevelTimer_timeout():
 	$BouncePad.reset()
