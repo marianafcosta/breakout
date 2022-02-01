@@ -38,6 +38,7 @@ func _physics_process(delta):
 		
 		var prev_hits_num = hits_num
 		if (collision_info.collider is Brick):
+			$HitBrick.play()
 			collision_info.collider.queue_free()
 			hits_num += 1
 			emit_signal("brick_hit", collision_info.collider.color)
@@ -50,6 +51,7 @@ func _physics_process(delta):
 			
 		# TODO: The physics stil aren't quite right
 		if (collision_info.collider is BouncePad):
+			$HitBouncePad.play()
 			wait_for = 5
 			# Get the position of the collision in global coordinates
 			var collision_pos = collision_info.position
@@ -75,6 +77,7 @@ func _physics_process(delta):
 				else:
 					velocity = velocity.bounce(collision_info.normal)
 		else:
+			$HitWall.play()
 			velocity = velocity.bounce(collision_info.normal)
 		
 		if (

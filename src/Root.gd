@@ -29,6 +29,9 @@ func restart():
 	game_over = false
 	lives = 5
 	score = 0
+	instance_ball()
+
+func instance_ball():
 	var instance = BALL_RESOURCE.instance()
 	add_child(instance)
 	move_child(instance, 4)
@@ -41,8 +44,7 @@ func _on_Ball_out_of_bounds():
 	lives -= 1
 	$UI/Lives.text = str(lives)
 	if (lives > 0):
-		var instance = BALL_RESOURCE.instance()
-		add_child(instance)
+		instance_ball()
 	else:
 		game_over = true
 		$UI/GameOverScreen.visible = game_over
@@ -51,9 +53,7 @@ func _on_NextLevelTimer_timeout():
 	$BouncePad.reset()
 	$Bricks.spawn_bricks()
 	$Ball.queue_free()
-	var instance = BALL_RESOURCE.instance()
-	add_child(instance)
-	move_child(instance, 3)
+	instance_ball()
 
 func _on_Bricks_wall_cleared():
 	if $NextLevelTimer.time_left <= 0 && levels_cleared < 1:
