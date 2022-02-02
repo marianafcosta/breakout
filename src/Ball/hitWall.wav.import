@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hitBrick.wav-defb325b12fc597bc59ebb08ace92852.sample"
+path="res://.import/hitWall.wav-24a8fb35d1041eef9ce2d5d00d3bb5db.sample"
 
 [deps]
 
-source_file="res://hitBrick.wav"
-dest_files=[ "res://.import/hitBrick.wav-defb325b12fc597bc59ebb08ace92852.sample" ]
+source_file="res://Ball/hitWall.wav"
+dest_files=[ "res://.import/hitWall.wav-24a8fb35d1041eef9ce2d5d00d3bb5db.sample" ]
 
 [params]
 

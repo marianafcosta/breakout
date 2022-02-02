@@ -2,7 +2,7 @@ extends Node2D
 
 signal score_change
 
-const BALL_RESOURCE = preload("res://Ball.tscn")
+const BALL_RESOURCE = preload("res://Ball/Ball.tscn")
 
 var score = 0
 var lives = 5
@@ -24,11 +24,12 @@ func _process(_delta):
 
 func restart():
 	$UI/GameOverScreen.visible = false
-	$UI/Score.text = str(score)
-	$UI/Lives.text = str(lives)
+	$UI/GameWonScreen.visible = false
 	game_over = false
 	lives = 5
 	score = 0
+	$UI/Score.text = str(score)
+	$UI/Lives.text = str(lives)
 	instance_ball()
 
 func instance_ball():
@@ -52,10 +53,12 @@ func _on_Ball_out_of_bounds():
 func _on_NextLevelTimer_timeout():
 	$BouncePad.reset()
 	$Bricks.spawn_bricks()
-	$Ball.queue_free()
 	instance_ball()
 
 func _on_Bricks_wall_cleared():
 	if $NextLevelTimer.time_left <= 0 && levels_cleared < 1:
 		levels_cleared += 1
 		$NextLevelTimer.start()
+	else:
+		$UI/GameWonScreen.visible = true
+	$Ball.queue_free()

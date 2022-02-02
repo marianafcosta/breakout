@@ -2,7 +2,7 @@ extends Node2D
 
 signal wall_cleared
 
-const BRICK_RESOURCE = preload("res://Brick.tscn")
+const BRICK_RESOURCE = preload("res://Brick/Brick.tscn")
 
 const H_SCREEN_PADDING = 8
 const BRICK_DIMENSIONS = Vector2(8, 2)

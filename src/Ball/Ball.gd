@@ -44,10 +44,10 @@ func _physics_process(delta):
 			emit_signal("brick_hit", collision_info.collider.color)
 			if (collision_info.collider.color == "orange" && !orange_contact):
 				orange_contact = true
-				velocity *= 1.2
+				velocity *= 1.1
 			elif(collision_info.collider.color == "red" && !red_contact):
 				red_contact = true
-				velocity *= 1.2
+				velocity *= 1.1
 			
 		# TODO: The physics stil aren't quite right
 		if (collision_info.collider is BouncePad):
@@ -84,7 +84,7 @@ func _physics_process(delta):
 			prev_hits_num < 4 && hits_num == 4 ||
 			prev_hits_num < 12 && hits_num == 12
 		):
-			velocity *= 1.2
+			velocity *= 1.1
 
 func _on_Timer_timeout():
 	velocity = Vector2(75, 75)

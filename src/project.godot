@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "BouncePad",
 "language": "GDScript",
-"path": "res://BouncePad.gd"
+"path": "res://BouncePad/BouncePad.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Brick",
 "language": "GDScript",
-"path": "res://Brick.gd"
+"path": "res://Brick/Brick.gd"
 } ]
 _global_script_class_icons={
 "BouncePad": "",

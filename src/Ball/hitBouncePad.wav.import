@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hitWall.wav-89548074b5362b94b72d1bc27cb29c1e.sample"
+path="res://.import/hitBouncePad.wav-cf19677c3f401a9c819771e3bc84b4f9.sample"
 
 [deps]
 
-source_file="res://hitWall.wav"
-dest_files=[ "res://.import/hitWall.wav-89548074b5362b94b72d1bc27cb29c1e.sample" ]
+source_file="res://Ball/hitBouncePad.wav"
+dest_files=[ "res://.import/hitBouncePad.wav-cf19677c3f401a9c819771e3bc84b4f9.sample" ]
 
 [params]
 

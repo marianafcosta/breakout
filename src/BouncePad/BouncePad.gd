@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 class_name BouncePad
 
-export var speed = 350
+export var speed = 250
 var velocity = Vector2(speed, 0)
 var original_scale
 
@@ -27,5 +27,5 @@ func reset():
 
 func _on_Ball_top_wall_hit():
 	if not top_wall_hit:
-		set_scale(Vector2(self.scale.x * 0.75, self.scale.y))
+		set_scale(Vector2(self.scale.x * 0.80, self.scale.y))
 		top_wall_hit = true
